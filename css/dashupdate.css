@@ -1,0 +1,370 @@
+/* Base */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans", Arial, sans-serif;
+    background-image: url("../Images/Background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* NAV (theme) */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #2c3e50;
+    padding: 15px 0;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-family: "Lora", serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: background-color .3s ease, color .3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #d4a574;
+    color: #2c3e50;
+    border-radius: 6px;
+}
+
+/* Headings */
+.title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    margin: 30px 0 20px;
+}
+
+.label {
+    font-weight: 700;
+    margin: 0 0 14px 2px;
+    display: inline-block;
+}
+
+/* ----- Card + Grid ----- */
+.card {
+    width: 100%;
+    background: rgba(255, 255, 255, .9);
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px 0 40px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+}
+
+/* Ensure uniform spacing for all form controls */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    /* same gap everywhere */
+    margin-bottom: 6px;
+}
+
+.grid .full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-left: 2px;
+    margin-bottom: 6px;
+}
+
+/* Inputs inside the two-column grid */
+.grid input,
+.grid textarea,
+.grid select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    margin: 0;
+    /* reset browser defaults */
+    box-sizing: border-box;
+    background: #fff;
+    font-size: 15px;
+    transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.grid input:focus,
+.grid textarea:focus,
+.grid select:focus {
+    outline: none;
+    border-color: #5cb85c;
+    box-shadow: 0 0 6px rgba(92, 184, 92, .45);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* money pair */
+.money {
+    display: flex;
+    align-items: center;
+}
+
+.money span {
+    padding: 12px 12px;
+    border: 1px solid #bfbfbf;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    background: #fafafa;
+}
+
+.money input {
+    border-radius: 0 10px 10px 0;
+}
+
+/* -------- Apply Offer: match grid inputs WITHOUT HTML changes -------- */
+/* Style the offer input directly so it looks identical to .grid inputs */
+#offer_code,
+input[name="offer_code"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    margin: 0;
+    /* same reset */
+    box-sizing: border-box;
+    background: #fff;
+    font-size: 15px;
+    transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+/* Same focus glow as grid inputs */
+#offer_code:focus,
+input[name="offer_code"]:focus {
+    outline: none;
+    border-color: #5cb85c;
+    box-shadow: 0 0 6px rgba(92, 184, 92, .45);
+}
+
+/* Keep vertical rhythm in that single-field card */
+.card>label[for="offer_code"] {
+    margin-bottom: 6px;
+}
+
+/* Buttons (centered) */
+.btns,
+.row-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .3s ease, transform .2s ease;
+    min-width: 140px;
+}
+
+.btn:hover {
+    background-color: #4cae4c;
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.edit {
+    background: #5cb85c;
+    color: #fff;
+}
+
+.btn.delete {
+    background: #e34d4d;
+    color: #fff;
+}
+
+/* Validation helpers */
+.error {
+    color: #e34d4d;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.success {
+    color: #2bb34a;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.is-invalid {
+    border-color: #e34d4d !important;
+}
+
+/* Footer (theme) */
+.footer {
+    background-color: #2c3e50;
+    padding: 50px 20px;
+    border-radius: 8px;
+    color: #fff;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-family: "Lora", serif;
+    color: #d4a574;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #fff;
+    font-size: 14px;
+    margin: 8px 0;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #d4a574;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.social-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    transition: transform .3s ease;
+}
+
+.social-icon:hover .social-logo {
+    transform: scale(1.1);
+}
+
+.newsletter-input {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.newsletter-btn {
+    padding: 12px 25px;
+    background-color: #d4a574;
+}
+
+.newsletter-btn:hover {
+    background-color: #b5895f;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, .2);
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    color: #fff;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
